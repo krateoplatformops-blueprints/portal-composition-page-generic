@@ -79,7 +79,7 @@ global:
   krateoNamespace: krateo-system
   # @schema
   # description: composition graceful pause
-  # type: string
+  # type: boolean
   # examples: [false]
   # @schema 
   gracefullyPaused: false
