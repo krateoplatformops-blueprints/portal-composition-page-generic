@@ -88,11 +88,29 @@
         },
         "krateoNamespace": {
           "default": "krateo-system",
-          "description": "namespace where Krateo is installed.",
+          "description": "namespace where Krateo is installed",
           "examples": [
             "krateo-system"
           ],
           "title": "krateoNamespace",
+          "type": "string"
+        },
+        "gracefullyPaused": {
+          "default": false,
+          "description": "composition graceful pause",
+          "examples": [
+            false
+          ],
+          "title": "gracefullyPaused",
+          "type": "boolean"
+        },
+        "compositionApiVersion": {
+          "default": "composition.krateo.io/v0-0-1",
+          "description": "Composition Custom Resource apiVersion",
+          "examples": [
+            "composition.krateo.io/v0-0-1"
+          ],
+          "title": "compositionApiVersion",
           "type": "string"
         }
       },
