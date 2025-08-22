@@ -8,7 +8,7 @@ spec:
     actions: {}
     items:
       - resourceRefId: composition-status-panel-table
-      - resourceRefId: composition-status-panel-flowchart
+      # - resourceRefId: composition-status-panel-flowchart
   resourcesRefs:
     items:
       - id: composition-status-panel-table
@@ -17,9 +17,9 @@ spec:
         namespace: {{ .Values.global.compositionNamespace }}
         resource: tables
         verb: GET
-      - id: composition-status-panel-flowchart
-        apiVersion: widgets.templates.krateo.io/v1beta1
-        name: {{ .Values.global.compositionName }}-composition-status-panel-flowchart
-        namespace: {{ .Values.global.compositionNamespace }}
-        resource: flowcharts
-        verb: GET
+      # - id: composition-status-panel-flowchart
+      #   apiVersion: widgets.templates.krateo.io/v1beta1
+      #   name: {{ .Values.global.compositionName }}-composition-status-panel-flowchart
+      #   namespace: {{ .Values.global.compositionNamespace }}
+      #   resource: flowcharts
+      #   verb: GET

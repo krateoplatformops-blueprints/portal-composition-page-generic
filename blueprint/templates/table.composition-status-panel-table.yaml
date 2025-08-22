@@ -14,10 +14,10 @@ spec:
       valueKey: kind
     - title: Version
       valueKey: version
-    - title: CreatedAt
-      valueKey: createdAt
+    - title: Date
+      valueKey: date
     - title: isReady 
-      valueKey: health.isReady
+      valueKey: statusIcon.isReady
     data: []
     pageSize: 10
   widgetDataTemplate:
