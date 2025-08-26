@@ -28,13 +28,13 @@ global:
   # type: string
   # examples: [9a40181e-d8ee-416f-92c5-f1d85c39f4d5]
   # @schema    
-  compositionId: 42edad35-6903-4531-af4a-8faa487a0c8e
+  compositionId: a4a524f7-33a9-4d71-96d5-9e9b7daa3a42
   # @schema
   # description: Composition Custom Resource metadata name
   # type: string
   # examples: [test]
   # @schema    
-  compositionName: test
+  compositionName: devcomm-02
   # @schema
   # description: Composition Custom Resource metadata namespace
   # type: string
@@ -82,4 +82,4 @@ global:
   # type: boolean
   # examples: [false]
   # @schema 
-  gracefullyPaused: false
+  gracefullyPaused: "false"
