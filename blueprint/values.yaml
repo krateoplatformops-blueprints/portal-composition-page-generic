@@ -26,7 +26,7 @@ global:
   # @schema
   # description: Composition Custom Resource metadata uid
   # type: string
-  # examples: [9a40181e-d8ee-416f-92c5-f1d85c39f4d5]
+  # examples: [a4a524f7-33a9-4d71-96d5-9e9b7daa3a42]
   # @schema    
   compositionId: a4a524f7-33a9-4d71-96d5-9e9b7daa3a42
   # @schema
@@ -34,7 +34,7 @@ global:
   # type: string
   # examples: [test]
   # @schema    
-  compositionName: devcomm-02
+  compositionName: test
   # @schema
   # description: Composition Custom Resource metadata namespace
   # type: string
