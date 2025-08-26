@@ -10,7 +10,7 @@ spec:
     sseTopic: "{{ .Values.global.compositionId }}"
   widgetDataTemplate:
     - forPath: events
-      expression: ${ .list.getEvents }
+      expression: ${ .list }
   apiRef:
     name: {{ .Values.global.compositionName }}-composition-events
     namespace: {{ .Values.global.compositionNamespace }}

@@ -16,7 +16,7 @@ spec:
             url: "/compositions/${metadata.namespace}/${metadata.name}"
             timeout: 50
           payloadKey: spec
-          successMessage: '${"Successfully updated " + .response.kind + " composition in namespace " + .response.namespace }'
+          successMessage: '${"Successfully updated " + .response.metadata.name + " composition in namespace " + .response.metadata.namespace }'
           errorMessage: '${"Composition update failed" }'
           resourceRefId: composition-to-patch
           type: rest
