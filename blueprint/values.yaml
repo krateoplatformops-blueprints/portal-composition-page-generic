@@ -80,6 +80,6 @@ global:
   # @schema
   # description: composition graceful pause
   # type: boolean
-  # examples: [false]
+  # examples: ["false"]
   # @schema 
-  gracefullyPaused: false
+  gracefullyPaused: "false"
