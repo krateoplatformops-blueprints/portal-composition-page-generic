@@ -10,6 +10,10 @@ spec:
     name: {{ .Values.global.compositionName }}-composition-values
     namespace: {{ .Values.global.compositionNamespace }}
   widgetData:
+    allowedResources:
+      - markdowns
+      - buttons
+      - tablists
     clickActionId: composition-click-action
     footer:
       - resourceRefId: composition-panel-button-delete

@@ -5,6 +5,8 @@ metadata:
   namespace: {{ .Values.global.compositionNamespace }}
 spec:
   widgetData:
+    allowedResources:
+      - eventlists
     actions: {}
     items:
       - resourceRefId: composition-events-panel-eventlist

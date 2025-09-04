@@ -5,6 +5,8 @@ metadata:
   namespace: {{ .Values.global.compositionNamespace }}
 spec:
   widgetData:
+    allowedResources:
+      - {{ .Values.global.compositionResource }}
     icon: ""
     type: default
     shape: circle

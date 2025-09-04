@@ -6,6 +6,8 @@ metadata:
   namespace: {{ .Values.global.compositionNamespace }}
 spec:
   widgetData:
+    allowedResources:
+      - {{ .Values.global.compositionResource }}
     schema: {}
     submitActionId: update-action-from-string-schema
     actions:
