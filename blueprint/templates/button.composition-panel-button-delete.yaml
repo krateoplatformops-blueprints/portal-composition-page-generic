@@ -5,6 +5,8 @@ metadata:
   namespace: {{ .Values.global.compositionNamespace }}
 spec:
   widgetData:
+    allowedResources:
+      - {{ .Values.global.compositionResource }}
     icon: fa-trash
     type: default
     shape: circle

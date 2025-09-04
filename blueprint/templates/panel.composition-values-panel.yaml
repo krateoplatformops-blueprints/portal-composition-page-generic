@@ -5,6 +5,9 @@ metadata:
   namespace: {{ .Values.global.compositionNamespace }}
 spec: 
   widgetData:
+    allowedResources:
+      - buttons
+      - yamlviewers
     actions: {}
     items:
       - resourceRefId: composition-values-panel-button-edit
