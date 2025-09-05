@@ -14,9 +14,40 @@ spec:
       iterator: .getComposition.status.managed
       name: getComposition
     path: ${ (.path) }
+    continueOnError: true
+    errorKey: allCompositionResourcesError
   filter: >
     (
-      .allCompositionResources
+      # 1) Ensure we always have an array to work with
+      (
+        if (.allCompositionResources | type) == "array" then
+          .allCompositionResources
+        else
+          []
+        end
+      )
+      # 2) If allCompositionResourcesError exists, append a synthetic element
+      + (
+          if .allCompositionResourcesError? then
+            [
+              {
+                apiVersion: "Error",
+                status: {
+                  conditions: [
+                    {
+                      type: "Ready",
+                      status: "False",
+                      message: (.allCompositionResourcesError.message // "")
+                    }
+                  ]
+                }
+              }
+            ]
+          else
+            []
+          end
+        )
+
       # Apply exclusion filters
       | map(select(
           (
