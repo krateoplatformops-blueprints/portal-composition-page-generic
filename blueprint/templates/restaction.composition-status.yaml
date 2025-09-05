@@ -153,11 +153,11 @@ spec:
                       .getComposition.status.conditions[]
                       | select(.type == "Ready")
                       | if .status == "True" then
-                          { name: "fa-check",                 color: "#52c41a", message: (.message // ""), isReady: "true" }
+                          { name: "fa-check",                 color: "#52c41a", message: (.reason // ""), isReady: "true" }
                         elif .status == "False" then
-                          { name: "fa-triangle-exclamation", color: "#fa8c16", message: (.message // ""), isReady: "false" }
+                          { name: "fa-triangle-exclamation", color: "#fa8c16", message: (.reason // ""), isReady: "false" }
                         else
-                          { name: "fa-circle",               color: "#6c757d", message: (.message // ""), isReady: "false" }
+                          { name: "fa-circle",               color: "#6c757d", message: (.reason // ""), isReady: "false" }
                         end
                     )
                   # Else if conditions exist → take the first element
@@ -165,11 +165,11 @@ spec:
                     (
                       .getComposition.status.conditions[0]
                       | if .status == "True" then
-                          { name: "fa-check",                 color: "#52c41a", message: (.message // ""), isReady: "true" }
+                          { name: "fa-check",                 color: "#52c41a", message: (.reason // ""), isReady: "true" }
                         elif .status == "False" then
-                          { name: "fa-triangle-exclamation", color: "#fa8c16", message: (.message // ""), isReady: "false" }
+                          { name: "fa-triangle-exclamation", color: "#fa8c16", message: (.reason // ""), isReady: "false" }
                         else
-                          { name: "fa-circle",               color: "#6c757d", message: (.message // ""), isReady: "false" }
+                          { name: "fa-circle",               color: "#6c757d", message: (.reason // ""), isReady: "false" }
                         end
                     )
                   # Else → fallback: status not available
@@ -213,22 +213,22 @@ spec:
                         .getComposition.status.conditions[]
                         | select(.type == "Ready")
                         | if .status == "True" then
-                            { name: "fa-check",                 color: "#52c41a", message: (.message // ""), isReady: "true" }
+                            { name: "fa-check",                 color: "#52c41a", message: (.reason // ""), isReady: "true" }
                           elif .status == "False" then
-                            { name: "fa-triangle-exclamation", color: "#fa8c16", message: (.message // ""), isReady: "false" }
+                            { name: "fa-triangle-exclamation", color: "#fa8c16", message: (.reason // ""), isReady: "false" }
                           else
-                            { name: "fa-circle",               color: "#6c757d", message: (.message // ""), isReady: "false" }
+                            { name: "fa-circle",               color: "#6c757d", message: (.reason // ""), isReady: "false" }
                           end
                       )
                     elif (.getComposition.status.conditions? | length > 0) then
                       (
                         .getComposition.status.conditions[0]
                         | if .status == "True" then
-                            { name: "fa-check",                 color: "#52c41a", message: (.message // ""), isReady: "true" }
+                            { name: "fa-check",                 color: "#52c41a", message: (.reason // ""), isReady: "true" }
                           elif .status == "False" then
-                            { name: "fa-triangle-exclamation", color: "#fa8c16", message: (.message // ""), isReady: "false" }
+                            { name: "fa-triangle-exclamation", color: "#fa8c16", message: (.reason // ""), isReady: "false" }
                           else
-                            { name: "fa-circle",               color: "#6c757d", message: (.message // ""), isReady: "false" }
+                            { name: "fa-circle",               color: "#6c757d", message: (.reason // ""), isReady: "false" }
                           end
                       )
                     else
