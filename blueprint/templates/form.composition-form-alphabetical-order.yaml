@@ -6,8 +6,6 @@ metadata:
   namespace: {{ .Values.global.compositionNamespace }}
 spec:
   widgetData:
-    allowedResources:
-      - {{ .Values.global.compositionResource }}
     schema: {}
     submitActionId: update-action-from-schema
     actions:
@@ -15,11 +13,11 @@ spec:
         - id: update-action-from-schema
           onEventNavigateTo:
             eventReason: "CompositionUpdated"
-            url: "/compositions/${metadata.namespace}/${metadata.name}"
+            url: '${ "/compositions/" + .response.metadata.namespace + "/" + .response.metadata.name }'
             timeout: 50
           payloadKey: spec
-          successMessage: '${"Successfully updated " + .response.metadata.name + " composition in namespace " + .response.metadata.namespace }'
-          errorMessage: '${"Composition update failed" }'
+          successMessage: '${"Successfully updated " + .response.metadata.name + " composition in namespace " + .response.metadata.namespace}'
+          errorMessage: '${"Composition update failed"}'
           resourceRefId: composition-to-patch
           type: rest
           # payloadToOverride:
