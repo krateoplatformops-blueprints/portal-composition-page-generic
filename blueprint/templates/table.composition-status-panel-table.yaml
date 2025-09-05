@@ -19,6 +19,8 @@ spec:
       valueKey: date
     - title: isReady 
       valueKey: isReady
+    - title: Status
+      valueKey: statusMessage
     data: []
     pageSize: 10
   widgetDataTemplate:
