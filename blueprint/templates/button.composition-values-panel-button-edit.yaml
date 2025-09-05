@@ -5,8 +5,6 @@ metadata:
   namespace: {{ .Values.global.compositionNamespace }}
 spec:
   widgetData:
-    allowedResources:
-      - forms
     icon: fa-pen
     type: default
     shape: circle
