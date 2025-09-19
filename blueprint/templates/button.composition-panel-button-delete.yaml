@@ -18,6 +18,8 @@ spec:
             eventReason: "CompositionDeleted"
             url: "/compositions"
             timeout: 50
+          headers:
+          - "Content-Type: application/json"
   resourcesRefs:
     items:
       - id: delete
