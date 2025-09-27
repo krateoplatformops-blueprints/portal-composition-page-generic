@@ -15,16 +15,12 @@ spec:
             eventReason: "CompositionUpdated"
             url: '${ "/compositions/" + .response.metadata.namespace + "/" + .response.metadata.name }'
             timeout: 50
-          payloadKey: spec
           successMessage: '${"Successfully updated " + .response.metadata.name + " composition in namespace " + .response.metadata.namespace}'
-          errorMessage: '${"Composition update failed"}'
           resourceRefId: composition-to-patch
           type: rest
-          # payloadToOverride:
-          # - name: metadata.name
-          #   value: ""
-          # - name: metadata.namespace
-          #   value: ""
+          payloadToOverride:
+          - name: spec
+            value: ${ .json }
           headers:
           - "Content-Type: application/merge-patch+json"
   widgetDataTemplate:
