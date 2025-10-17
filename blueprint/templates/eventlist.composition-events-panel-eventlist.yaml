@@ -10,7 +10,25 @@ spec:
     sseTopic: "{{ .Values.global.compositionId }}"
   widgetDataTemplate:
     - forPath: events
-      expression: ${ .list }
+      expression: >
+        ${ 
+          .list
+          | map(
+              .eventTime               = (.eventTime // "") |
+              .firstTimestamp          = (if (.firstTimestamp // "") == "" then (.eventTime // "") else .firstTimestamp end) |
+              .lastTimestamp           = (if (.lastTimestamp // "") == "" then (.firstTimestamp // "") else .lastTimestamp end) |
+              .involvedObject.namespace = (.involvedObject.namespace // "") |
+              del(
+                .metadata.resourceVersion,
+                .metadata.annotations,
+                .metadata.labels,
+                .metadata.managedFields,
+                .metadata.generatedName,
+                .involvedObject.resourceVersion,
+                .series
+              )
+            )
+        }
   apiRef:
     name: {{ .Values.global.compositionName }}-composition-events
     namespace: {{ .Values.global.compositionNamespace }}

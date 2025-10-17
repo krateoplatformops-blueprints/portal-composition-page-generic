@@ -19,19 +19,5 @@ spec:
     {
       list: (
         (.getEvents // [])
-        | map(
-            .eventTime               = (.eventTime // "") |
-            .firstTimestamp          = (.firstTimestamp // "") |
-            .lastTimestamp           = (.lastTimestamp // "") |
-            .involvedObject.namespace = (.involvedObject.namespace // "") |
-            del(
-              .metadata.resourceVersion,
-              .metadata.annotations,
-              .metadata.labels,
-              .metadata.managedFields,
-              .involvedObject.resourceVersion,
-              .series
-            )
-          )
       )
     }
