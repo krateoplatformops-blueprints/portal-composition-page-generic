@@ -11,12 +11,21 @@ spec:
   widgetDataTemplate:
     - forPath: events
       expression: >
-        ${ 
+        ${
           .list
           | map(
-              .eventTime               = (.eventTime // "") |
-              .firstTimestamp          = (if (.firstTimestamp // "") == "" then (.eventTime // "") else .firstTimestamp end) |
-              .lastTimestamp           = (if (.lastTimestamp // "") == "" then (.firstTimestamp // "") else .lastTimestamp end) |
+              .firstTimestamp = ( if (.firstTimestamp // "") == "" 
+                                  then (.eventTime // .lastTimestamp // null) 
+                                  else .firstTimestamp 
+                                end ) |
+              .lastTimestamp  = ( if (.lastTimestamp // "") == "" 
+                                  then (.firstTimestamp // .eventTime // null) 
+                                  else .lastTimestamp 
+                                end ) |
+              .eventTime      = ( if (.eventTime // "") == "" 
+                                  then (.firstTimestamp // .lastTimestamp // null) 
+                                  else .eventTime 
+                                end ) |
               .involvedObject.namespace = (.involvedObject.namespace // "") |
               del(
                 .metadata.resourceVersion,
