@@ -1,7 +1,7 @@
 kind: FlowChart
 apiVersion: widgets.templates.krateo.io/v1beta1
 metadata:
-  name: {{ .Values.global.compositionName }}-composition-status-panel-flowchart
+  name: {{ .Values.global.compositionKind | lower }}-{{ .Values.global.compositionName }}-composition-status-panel-flowchart
   namespace: {{ .Values.global.compositionNamespace }}
 spec:
   widgetData:
@@ -10,5 +10,5 @@ spec:
     - forPath: data
       expression: ${ .nodes }
   apiRef:
-    name: {{ .Values.global.compositionName }}-composition-status
+    name: {{ .Values.global.compositionKind | lower }}-{{ .Values.global.compositionName }}-composition-status
     namespace: {{ .Values.global.compositionNamespace }}

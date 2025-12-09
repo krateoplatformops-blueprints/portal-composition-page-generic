@@ -28,13 +28,13 @@ global:
   # type: string
   # examples: [a4a524f7-33a9-4d71-96d5-9e9b7daa3a42]
   # @schema    
-  compositionId: 44f578ac-eb40-4118-be68-951398a5de1a
+  compositionId: a4a524f7-33a9-4d71-96d5-9e9b7daa3a42
   # @schema
   # description: Composition Custom Resource metadata name
   # type: string
-  # examples: [test]
+  # examples: [cloudnative-stack]
   # @schema    
-  compositionName: test
+  compositionName: cloudnative-stack
   # @schema
   # description: Composition Custom Resource metadata namespace
   # type: string
@@ -46,13 +46,13 @@ global:
   # type: string
   # examples: [v0-0-1]
   # @schema  
-  compositionInstalledVersion: v1-0-0
+  compositionInstalledVersion: v0-3-2
   # @schema
   # description: Composition Custom Resource apiVersion
   # type: string
   # examples: [composition.krateo.io/v0-0-1]
   # @schema  
-  compositionApiVersion: composition.krateo.io/v1-0-0
+  compositionApiVersion: composition.krateo.io/v0-3-2
   # @schema
   # description: Composition Custom Resource group
   # type: string
@@ -64,13 +64,13 @@ global:
   # type: string
   # examples: [githubscaffoldings]
   # @schema 
-  compositionResource: githubscaffoldings
+  compositionResource: cloudnativestacks
   # @schema
   # description: Composition Custom Resource kind
   # type: string
   # examples: [GithubScaffolding]
   # @schema    
-  compositionKind: GithubScaffolding
+  compositionKind: CloudnativeStack
   # @schema
   # description: namespace where Krateo is installed
   # type: string

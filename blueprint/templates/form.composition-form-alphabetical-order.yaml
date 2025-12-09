@@ -2,7 +2,7 @@
 kind: Form
 apiVersion: widgets.templates.krateo.io/v1beta1
 metadata:
-  name: {{ .Values.global.compositionName }}-composition-form-alphabetical-order
+  name: {{ .Values.global.compositionKind | lower }}-{{ .Values.global.compositionName }}-composition-form-alphabetical-order
   namespace: {{ .Values.global.compositionNamespace }}
 spec:
   widgetData:
@@ -36,6 +36,6 @@ spec:
       resource: {{ .Values.global.compositionResource }}
       verb: PATCH
   apiRef:
-    name: {{ .Values.global.compositionName }}-composition-schema
+    name: {{ .Values.global.compositionKind | lower }}-{{ .Values.global.compositionName }}-composition-schema
     namespace: {{ .Values.global.compositionNamespace }}
 {{- end }}
