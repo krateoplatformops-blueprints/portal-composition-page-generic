@@ -1,7 +1,7 @@
 kind: Panel
 apiVersion: widgets.templates.krateo.io/v1beta1
 metadata:
-  name: {{ .Values.global.compositionName }}-composition-status-panel
+  name: {{ .Values.global.compositionKind | lower }}-{{ .Values.global.compositionName }}-composition-status-panel
   namespace: {{ .Values.global.compositionNamespace }}
 spec:
   widgetData:
@@ -13,13 +13,13 @@ spec:
     items:
       - id: composition-status-panel-table
         apiVersion: widgets.templates.krateo.io/v1beta1
-        name: {{ .Values.global.compositionName }}-composition-status-panel-table
+        name: {{ .Values.global.compositionKind | lower }}-{{ .Values.global.compositionName }}-composition-status-panel-table
         namespace: {{ .Values.global.compositionNamespace }}
         resource: tables
         verb: GET
       # - id: composition-status-panel-flowchart
       #   apiVersion: widgets.templates.krateo.io/v1beta1
-      #   name: {{ .Values.global.compositionName }}-composition-status-panel-flowchart
+      #   name: {{ .Values.global.compositionKind | lower }}-{{ .Values.global.compositionName }}-composition-status-panel-flowchart
       #   namespace: {{ .Values.global.compositionNamespace }}
       #   resource: flowcharts
       #   verb: GET
