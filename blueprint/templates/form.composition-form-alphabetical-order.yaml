@@ -13,7 +13,7 @@ spec:
         - id: update-action-from-schema
           onEventNavigateTo:
             eventReason: "CompositionUpdated"
-            url: '${ "/compositions/" + .response.metadata.namespace + "/" + .response.metadata.name }'
+            url: '${ "/compositions/" + .response.metadata.namespace + "/" + (.response.kind | ascii_downcase) + "/" + .response.metadata.name }'
             timeout: 50
           successMessage: '${"Successfully updated " + .response.metadata.name + " composition in namespace " + .response.metadata.namespace}'
           resourceRefId: composition-to-patch
