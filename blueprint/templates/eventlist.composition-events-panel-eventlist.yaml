@@ -26,6 +26,10 @@ spec:
                                   then (.firstTimestamp // .lastTimestamp // null) 
                                   else .eventTime 
                                 end ) |
+              .message        = ( if (.message // "") == ""
+                                  then (.reason // "")
+                                  else .message
+                                end ) |
               .involvedObject.namespace = (.involvedObject.namespace // "") |
               del(
                 .metadata.resourceVersion,
