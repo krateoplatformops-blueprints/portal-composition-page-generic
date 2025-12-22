@@ -21,17 +21,17 @@ Download Helm Chart values:
 ```sh
 helm repo add marketplace https://marketplace.krateo.io
 helm repo update marketplace
-helm inspect values marketplace/portal-composition-page-generic --version 1.0.0 > ~/portal-composition-page-generic-values.yaml
+helm inspect values marketplace/portal-composition-page-generic --version 1.4.0 > ~/portal-composition-page-generic-values.yaml
 ```
 
 Modify the *portal-composition-page-generic-values.yaml* file as the following example:
 
 ```yaml
 global:
-  compositionApiVersion: composition.krateo.io/v1-0-0
+  compositionApiVersion: composition.krateo.io/v1-4-0
   compositionGroup: composition.krateo.io
   compositionId: 9a40181e-d8ee-416f-92c5-f1d85c39f4d5
-  compositionInstalledVersion: v1-0-0
+  compositionInstalledVersion: v1-4-0
   compositionKind: GithubScaffolding
   compositionName: test
   compositionNamespace: demo-system
@@ -46,8 +46,8 @@ helm install test template \
   --repo https://marketplace.krateo.io \
   --namespace demo-system \
   --create-namespace \
-  -f ~/portal-composition-page-generic-values.yaml
-  --version 1.0.0 \
+  -f ~/portal-composition-page-generic-values.yaml \
+  --version 1.4.0 \
   --wait
 ```
 
@@ -66,7 +66,7 @@ spec:
   chart:
     repo: portal-composition-page-generic
     url: https://marketplace.krateo.io
-    version: 1.0.0
+    version: 1.4.0
 EOF
 ```
 
@@ -74,17 +74,17 @@ Install the Blueprint using, as metadata.name, the *Blueprint* name (the Helm Ch
 
 ```sh
 cat <<EOF | kubectl apply -f -
-apiVersion: composition.krateo.io/v1-0-0
+apiVersion: composition.krateo.io/v1-4-0
 kind: PortalCompositionPageGeneric
 metadata:
   name: test
   namespace: demo-system
 spec:
   global:
-    compositionApiVersion: composition.krateo.io/v1-0-0
+    compositionApiVersion: composition.krateo.io/v1-4-0
     compositionGroup: composition.krateo.io
     compositionId: 9a40181e-d8ee-416f-92c5-f1d85c39f4d5
-    compositionInstalledVersion: v1-0-0
+    compositionInstalledVersion: v1-4-0
     compositionKind: GithubScaffolding
     compositionName: test
     compositionNamespace: demo-system
