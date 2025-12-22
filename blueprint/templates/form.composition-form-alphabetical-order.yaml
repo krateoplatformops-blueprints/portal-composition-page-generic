@@ -25,8 +25,9 @@ spec:
           - "Content-Type: application/merge-patch+json"
   widgetDataTemplate:
     - forPath: schema
-      expression: >
-        ${ import "custom" as c; c::update_schema_defaults(.) }
+      expression: ${ .getOrderedSchema }
+    - forPath: initialValues
+      expression: ${ .getCompositionSpec }
   resourcesRefs:
     items:
     - id: composition-to-patch
