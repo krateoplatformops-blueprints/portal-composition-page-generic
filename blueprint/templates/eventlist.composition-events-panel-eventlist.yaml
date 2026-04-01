@@ -6,8 +6,8 @@ metadata:
 spec:
   widgetData:
     events: []
-    sseEndpoint: "/notifications"
-    sseTopic: "{{ .Values.global.compositionId }}"
+    sseEndpoint: "/notifications?composition_id={{ .Values.global.compositionId }}"
+    sseTopic: "krateo"
   widgetDataTemplate:
     - forPath: events
       expression: "${ .list }"
