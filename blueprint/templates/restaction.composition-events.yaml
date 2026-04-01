@@ -6,10 +6,10 @@ metadata:
 spec:
   api:
   - name: getEvents
-    path: "/events/{{ .Values.global.compositionId }}?limit=50"
+    path: "/events?composition_id={{ .Values.global.compositionId }}&limit=200"
     verb: GET
     endpointRef:
-      name: eventsse-internal-endpoint
+      name: events-presenter-endpoint
       namespace: {{ .Values.global.krateoNamespace }}
     headers:
     - 'Accept: application/json'
@@ -17,7 +17,5 @@ spec:
     errorKey: getEventsError
   filter: >
     {
-      list: (
-        (.getEvents // [])
-      )
+      list: (.getEvents.resources // [])
     }
