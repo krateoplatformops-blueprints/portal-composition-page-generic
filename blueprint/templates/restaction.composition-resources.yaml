@@ -10,7 +10,14 @@ spec:
     verb: GET
   - name: allCompositionResources
     dependsOn:
-      iterator: .getComposition.status.managed
+      iterator: >
+        (.getComposition.status.managed // [])
+        | map(select(
+            (
+              (.apiVersion | startswith("widgets.templates.krateo.io/")) or
+              (.apiVersion == "templates.krateo.io/v1" and .resource == "restactions")
+            ) | not
+          ))
       name: getComposition
     path: ${ (.path) }
     continueOnError: true
@@ -23,6 +30,8 @@ spec:
         (
           if (.allCompositionResources | type) == "array" then
             .allCompositionResources
+          elif (.allCompositionResources | type) == "object" then
+            [.allCompositionResources]
           else
             []
           end
@@ -48,11 +57,4 @@ spec:
               []
             end
           )
-        # Apply exclusion filters
-        | map(select(
-            (
-              (.apiVersion | startswith("widgets.templates.krateo.io/")) or
-              (.apiVersion == "templates.krateo.io/v1" and .kind == "RESTAction")
-            ) | not
-          ))
     }
