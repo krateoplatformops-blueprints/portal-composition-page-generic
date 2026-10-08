@@ -18,26 +18,18 @@ spec:
     verb: GET
     filter: >
       .getOrderedSchema.spec.versions[] | select(.name == "{{ .Values.global.compositionInstalledVersion }}") | .schema.openAPIV3Schema.properties.spec
-  - name: namespaces
-    path: /api/v1/namespaces
-    verb: GET
-    filter: '[.namespaces.items[] | .metadata.name]'
   - name: getCompositionDefinitionNamespace
-    dependsOn:
-      iterator: .namespaces
-      name: namespaces
-    path: ${ "/apis/core.krateo.io/v1alpha1/namespaces/" + (.) + "/compositiondefinitions"}
+    endpointRef:
+      name: resources-presenter-endpoint
+      namespace: {{ .Values.global.krateoNamespace }}
+    path: "/resources?group=core.krateo.io&version=v1alpha1&resource=compositiondefinitions&namespace=*&raw=true&status_raw=true&limit=5000"
+    verb: GET
+    exportJwt: true
     continueOnError: true
     filter: >
-      if (.getCompositionDefinitionNamespace | type) == "array" then
-        [.getCompositionDefinitionNamespace[]?.items[]?]
-      elif (.getCompositionDefinitionNamespace | type) == "object" then
-        [.getCompositionDefinitionNamespace.items[]?]
-      else
-        []
-      end
-      | map(select(.status.resource == "{{ .Values.global.compositionResource }}"))
-      | map(.metadata.namespace)
+      [ .getCompositionDefinitionNamespace.items[]?
+        | select((.status_raw.resource // .raw.status.resource) == "{{ .Values.global.compositionResource }}")
+        | .namespace ]
   - name: getNotOrderedSchema
     dependsOn:
       name: getCompositionDefinitionNamespace
