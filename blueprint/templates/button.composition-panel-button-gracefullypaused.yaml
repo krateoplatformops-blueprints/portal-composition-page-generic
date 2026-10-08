@@ -47,5 +47,5 @@ spec:
           end
         }
   apiRef:
-    name: {{ .Values.global.compositionKind | lower }}-{{ .Values.global.compositionName }}-composition-values
+    name: {{ .Values.global.compositionKind | lower }}-{{ .Values.global.compositionName }}-composition-values-for-panel
     namespace: {{ .Values.global.compositionNamespace }}
